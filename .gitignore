@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+reports/
+coverage/
+yarn-error.log
+
+dev.config.local.js
