@@ -1,18 +1,20 @@
 {
-  "name": "async-data-placeholder",
+  "name": "lazyloading-data-placeholder",
   "description": "A content placeholder for async data",
-  "widgetName": "AsyncDataPlaceholder",
+  "widgetName": "LazyloadingDataPlaceholder",
   "organization": "mendix",
   "scope": "",
-  "widgetFriendlyName": "Async Data Placeholder",
+  "widgetFriendlyName": "Lazyloading Data Placeholder",
   "version": "0.1.0",
   "main": "index.js",
   "keywords": [
     "Mendix",
     "widget",
     "React",
-    "Javascript",
-    "Typescript"
+    "Async Data Placeholder",
+    "Content Placeholder",
+    "Placeholder",
+    "Async"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -33,6 +35,7 @@
     "@types/node": "^12.6.9",
     "@types/node-sass": "^4.11.0",
     "@types/react": "16.7.0",
+    "@types/react-dom": "16.8.0",
     "autoprefixer": "^9.5.1",
     "babel": "^6.23.0",
     "babel-eslint": "^10.0.1",

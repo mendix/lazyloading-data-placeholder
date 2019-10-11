@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="<%= NAME %>.widget.<%= NAME %>" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+  <name><%= FRIENDLY_NAME %></name>
+  <description><%= WIDGET_DESC %></description>
+  <icon></icon>
+  <properties>
+    <property key="pageContent" type="form" required="true">
+      <caption>Result page</caption>
+      <category>Settings</category>
+      <description>The page to load and display as lazy</description>
+    </property>
+    <property key="placeholderSkeleton" type="string" multiline="true" defaultValue="" required="false">
+      <caption>Placeholder SVG</caption>
+      <category>Settings</category>
+      <description>Placeholder skeleton to be shown before actual result content loads.</description>
+    </property>
+    <property key="repeatCount" type="integer" defaultValue="1">
+      <caption>Render Count</caption>
+      <category>Settings</category>
+      <description>Set the number of renders for the placeholder skeleton.</description>
+    </property>
+    <property key="width" type="integer" defaultValue="0">
+      <caption>Width</caption>
+      <category>Settings</category>
+      <description>Set the width of the placeholder skeleton.</description>
+    </property>
+    <property key="height" type="integer" defaultValue="0">
+      <caption>Height</caption>
+      <category>Settings</category>
+      <description>Set the height of the placeholder skeleton.</description>
+    </property>
+  </properties>
+</widget>

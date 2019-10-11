@@ -20,7 +20,8 @@
     "noUnusedParameters": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"],
   "exclude": ["build", "node_modules", "**/*.test.tsx"]
