@@ -6,10 +6,10 @@ import WidgetContainer from './containers';
 
 export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
   constructor: function() {
-    logger.debug(this.id + '.constructor');
+    console.debug(this.id + '.constructor');
   },
   postCreate: function() {
-    logger.debug(this.id + '.postCreate');
+    console.debug(this.id + '.postCreate');
     this.container = new WidgetContainer(this.id, this.params, this.domNode);
   },
   update(contextObject: mendix.lib.MxObject, callback: () => void) {
@@ -23,13 +23,13 @@ export default declare(`${widgetName}.widget.${widgetName}`, [_widgetBase], {
     this.container.resize();
   },
   uninitialize: function() {
-    logger.debug(this.id + '.uninitialize');
+    console.debug(this.id + '.uninitialize');
     this.container.uninitialize();
   },
   enable() {
-    logger.debug(this.id + '.enable');
+    console.debug(this.id + '.enable');
   },
   disable() {
-    logger.debug(this.id + '.disable');
+    console.debug(this.id + '.disable');
   },
 });

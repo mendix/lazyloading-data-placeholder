@@ -1,6 +1,6 @@
 {
   "name": "lazyloading-data-placeholder",
-  "description": "A content placeholder for async data",
+  "description": "A ghost placeholder for lazyloading data",
   "widgetName": "LazyloadingDataPlaceholder",
   "organization": "mendix",
   "scope": "",
@@ -11,10 +11,14 @@
     "Mendix",
     "widget",
     "React",
-    "Async Data Placeholder",
+    "Lazyloading Data Placeholder",
     "Content Placeholder",
     "Placeholder",
-    "Async"
+    "Lazy",
+    "Lazyloading",
+    "Async",
+    "Ghost",
+    "Skeleton"
   ],
   "dependencies": {},
   "devDependencies": {

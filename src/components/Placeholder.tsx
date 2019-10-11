@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Skeleton from './Skeleton';
+import { Ghost } from './Ghost';
 
 /**
  * `style` and `class` are default properties that are not defined in widget.config.ejs
@@ -8,8 +8,12 @@ import Skeleton from './Skeleton';
  */
 
 export interface PlaceholderProps {
+  skeletonSVG: string;
+  repeatCount: number;
   style: React.CSSProperties;
-  className: string;
+  className?: string;
+  placeholderClassName?: string;
+  itemClassName?: string;
   animate: boolean;
   animateInterval: number;
   ariaLabel: string;
@@ -23,8 +27,6 @@ export interface PlaceholderProps {
   secondaryOpacity: number;
   rtl: boolean;
   speed: number;
-  skeletonSVG: string;
-  repeatCount: number;
 }
 
 const min = 20;
@@ -37,9 +39,9 @@ const getLength = (maxWidth: number) => {
   return w;
 };
 
-const defaultSkeleton = (containerWidth: number, containerHeight: number) => {
+const sanitizeSkeleton = (containerWidth: number, containerHeight: number) => {
   let topCorner = 10;
-  let skeleton = '';
+  let skeleton = '<svg>';
   do {
     let leftCorner = 10;
     do {
@@ -49,7 +51,7 @@ const defaultSkeleton = (containerWidth: number, containerHeight: number) => {
     } while (leftCorner < containerWidth - 2 * min);
     topCorner += 20;
   } while (topCorner < containerHeight - min);
-  return skeleton;
+  return skeleton + '</svg>';
 };
 
 export const Placeholder = (props: PlaceholderProps) => {
@@ -59,19 +61,16 @@ export const Placeholder = (props: PlaceholderProps) => {
     height: Math.round(props.height / props.repeatCount),
     skeletonSVG:
       props.skeletonSVG ||
-      defaultSkeleton(props.width, props.height / props.repeatCount),
+      sanitizeSkeleton(props.width, props.height / props.repeatCount),
   };
 
   for (var i = 0; i < props.repeatCount; i++) {
-    content.push(
-      <div>
-        <Skeleton key={i} {...childProps} />
-      </div>
-    );
+    content.push(<Ghost key={i} {...childProps} />);
   }
 
   return (
     <div
+      className={props.placeholderClassName}
       style={{
         display: 'flex',
         flexDirection: 'column',

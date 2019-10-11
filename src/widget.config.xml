@@ -19,6 +19,16 @@
       <category>Settings</category>
       <description>Set the number of renders for the placeholder skeleton.</description>
     </property>
+    <property key="placeholderClass" type="string" defaultValue="" required="false">
+      <caption>Placeholder class</caption>
+      <category>Settings</category>
+      <description>Class name of the loading placeholder.</description>
+    </property>
+    <property key="itemClass" type="string" defaultValue="" required="false">
+      <caption>Item class</caption>
+      <category>Settings</category>
+      <description>Class name for each placeholder item</description>
+    </property>
     <property key="width" type="integer" defaultValue="0">
       <caption>Width</caption>
       <category>Settings</category>
