@@ -4,8 +4,8 @@ export interface WidgetProps extends Widget {
   pageContent: string;
   placeholderSkeleton: string;
   repeatCount: number;
-  placeholderClass: string;
+  containerClass: string;
+  containerStyle: string;
   itemClass: string;
-  width: number;
-  height: number;
+  itemStyle: string;
 }

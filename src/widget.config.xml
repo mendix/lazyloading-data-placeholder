@@ -19,25 +19,25 @@
       <category>Settings</category>
       <description>Set the number of renders for the placeholder skeleton.</description>
     </property>
-    <property key="placeholderClass" type="string" defaultValue="" required="false">
-      <caption>Placeholder class</caption>
-      <category>Settings</category>
-      <description>Class name of the loading placeholder.</description>
+    <property key="containerClass" type="string" defaultValue="" required="false">
+      <caption>Container class</caption>
+      <category>Style</category>
+      <description>Class name of the loading container.</description>
+    </property>
+    <property key="containerStyle" type="string" defaultValue="" required="false">
+      <caption>Container style</caption>
+      <category>Style</category>
+      <description>CSS stylesheet of the loading container.</description>
     </property>
     <property key="itemClass" type="string" defaultValue="" required="false">
       <caption>Item class</caption>
-      <category>Settings</category>
+      <category>Style</category>
       <description>Class name for each placeholder item</description>
     </property>
-    <property key="width" type="integer" defaultValue="0">
-      <caption>Width</caption>
-      <category>Settings</category>
-      <description>Set the width of the placeholder skeleton.</description>
-    </property>
-    <property key="height" type="integer" defaultValue="0">
-      <caption>Height</caption>
-      <category>Settings</category>
-      <description>Set the height of the placeholder skeleton.</description>
+    <property key="itemStyle" type="string" defaultValue="" required="false">
+      <caption>Item style</caption>
+      <category>Style</category>
+      <description>CSS stylesheet for each placeholder item</description>
     </property>
   </properties>
 </widget>

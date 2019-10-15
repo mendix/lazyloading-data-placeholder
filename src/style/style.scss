@@ -1,0 +1,18 @@
+.lazyloading-data-placeholder {
+  animation: lazyloading-data-placeholder-pulse 1s infinite;
+  opacity: 0.6;
+  fill: #eeeeee;
+  stroke-width: 1%;
+}
+
+@keyframes lazyloading-data-placeholder-pulse {
+  0% {
+    stroke: #9999a9;
+  }
+  50% {
+    stroke: #bcbcbf;
+  }
+  100% {
+    stroke: #9999a9;
+  }
+}

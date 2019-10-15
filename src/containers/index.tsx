@@ -1,4 +1,4 @@
-//import '../style/style.scss';
+import '../style/style.scss';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -25,9 +25,9 @@ export default class WidgetContainer {
     this.subscriptionHandles = [];
     this.mxObjectContext = undefined;
     this.contentForm = undefined;
+    this.divContent = undefined;
     this.loadingStarted = false;
     this.pageInitiated = false;
-    this.divContent = undefined;
     this.renderSkeleton();
   }
 
@@ -78,13 +78,13 @@ export default class WidgetContainer {
   };
 
   private openFormByFormProp = (pageContext?: mendix.lib.MxContext) => {
-    console.debug(this.widgetId + '._openFormByFormProp: ');
+    console.debug(this.widgetId + '.openFormByFormProp: ');
     this.divContent = document.createElement('div');
     var props = {
       location: 'node' as 'content' | 'popup' | 'modal' | 'node',
       domNode: this.divContent,
       callback: (mxform: mxui.lib.form._FormBase) => {
-        console.debug(this.widgetId + '._showPage on form');
+        console.debug(this.widgetId + '.showPage on form');
         if (this.contentForm != null && mxform != null) {
           this.contentForm.destroy();
         }
@@ -101,7 +101,7 @@ export default class WidgetContainer {
   };
 
   private loadContent = () => {
-    console.debug(this.widgetId + '._loadAndShowcontent');
+    console.debug(this.widgetId + '.loadContent');
     if (this.loadingStarted) return;
 
     this.loadingStarted = true;
@@ -111,11 +111,11 @@ export default class WidgetContainer {
         this.showContent();
         this.loadingStarted = false;
       } else {
-        console.debug(this.widgetId + '_setPage skip because already set.');
+        console.debug(this.widgetId + 'setPage skip because already set.');
       }
     } else {
       this.pageInitiated = true;
-      console.debug(this.widgetId + '_setPage');
+      console.debug(this.widgetId + 'setPage');
       if (this.mxObjectContext) {
         var pageContext = new mendix.lib.MxContext();
         pageContext.setTrackObject(this.mxObjectContext);
@@ -126,56 +126,15 @@ export default class WidgetContainer {
     }
   };
 
-  private calcWidth = () => {
-    if (this.widgetParams.width) return this.widgetParams.width;
-
-    if (this.widgetDomNode.offsetWidth) return this.widgetDomNode.offsetWidth;
-
-    if (
-      this.widgetDomNode.parentElement &&
-      this.widgetDomNode.parentElement.offsetWidth
-    )
-      return this.widgetDomNode.parentElement.offsetWidth;
-
-    return 200;
-  };
-
-  private calcHeight = () => {
-    if (this.widgetParams.height) return this.widgetParams.height;
-
-    if (this.widgetDomNode.offsetHeight) return this.widgetDomNode.offsetHeight;
-
-    if (
-      this.widgetDomNode.parentElement &&
-      this.widgetDomNode.parentElement.offsetHeight
-    )
-      return this.widgetDomNode.parentElement.offsetHeight;
-
-    return 200;
-  };
-
   private renderSkeleton = () => {
     console.debug(`${this.widgetId} >> renderSkeleton`);
     const props: PlaceholderProps = {
       skeletonSVG: this.widgetParams.placeholderSkeleton,
       repeatCount: this.widgetParams.repeatCount,
-      style: parseStyle(this.widgetParams.style),
-      className: this.widgetParams.className,
-      placeholderClassName: this.widgetParams.itemClass,
-      itemClassName: this.widgetParams.placeholderClass,
-      animate: true,
-      animateInterval: 0.3,
-      ariaLabel: 'Loading content ...',
-      gradientRatio: 3,
-      width: this.calcWidth(),
-      height: this.calcHeight(),
-      preserveAspectRatio: 'none',
-      primaryColor: '#ddddee',
-      primaryOpacity: 0.8,
-      secondaryColor: '#bbbbdd',
-      secondaryOpacity: 0.6,
-      rtl: false,
-      speed: 1,
+      containerClassName: this.widgetParams.containerClass,
+      containerStyle: parseStyle(this.widgetParams.containerStyle),
+      itemClassName: this.widgetParams.itemClass,
+      itemStyle: parseStyle(this.widgetParams.itemStyle),
     };
     ReactDOM.render(<Placeholder {...props} />, this.widgetDomNode);
   };
