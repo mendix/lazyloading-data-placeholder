@@ -13,7 +13,7 @@ export interface PlaceholderProps {
 
 export const Placeholder = (props: PlaceholderProps) => {
   let content = [];
-  for (var i = 0; i < props.repeatCount; i++) {
+  for (let i = 0; i < props.repeatCount; i++) {
     content.push(<Ghost key={i} {...props} />);
   }
   const style = { height: '100%', ...props.containerStyle };

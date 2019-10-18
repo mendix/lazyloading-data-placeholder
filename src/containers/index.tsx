@@ -80,7 +80,7 @@ export default class WidgetContainer {
   private openFormByFormProp = (pageContext?: mendix.lib.MxContext) => {
     console.debug(this.widgetId + '.openFormByFormProp: ');
     this.divContent = document.createElement('div');
-    var props = {
+    const props = {
       location: 'node' as 'content' | 'popup' | 'modal' | 'node',
       domNode: this.divContent,
       callback: (mxform: mxui.lib.form._FormBase) => {
@@ -117,7 +117,7 @@ export default class WidgetContainer {
       this.pageInitiated = true;
       console.debug(this.widgetId + 'setPage');
       if (this.mxObjectContext) {
-        var pageContext = new mendix.lib.MxContext();
+        const pageContext = new mendix.lib.MxContext();
         pageContext.setTrackObject(this.mxObjectContext);
         this.openFormByFormProp(pageContext);
       } else {
