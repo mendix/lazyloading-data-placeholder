@@ -168,12 +168,12 @@ const getWebpackConfig = () => {
       modules: ['node_modules'],
     },
     externals: [
-      {
-        react: 'react',
-      },
-      {
-        'react-dom': 'react-dom',
-      },
+      // {
+      //   react: 'react',
+      // },
+      // {
+      //   'react-dom': 'react-dom',
+      // },
       {
         MxWidgetBase: 'mxui/widget/_WidgetBase',
       },
