@@ -66,10 +66,10 @@ const NORMAL = 'normal';
 const getWebpackConfig = (mode = NORMAL) => {
   const isOnPreview = mode === PREVIEW;
   /**
-   * for widget itself, use `umd`
+   * for widget itself, use `amd`
    * for preview, use `commonjs`
    */
-  const libraryTarget = isOnPreview ? 'commonjs' : 'umd';
+  const libraryTarget = isOnPreview ? 'commonjs' : 'amd';
   const entry = isOnPreview
     ? { [`${widgetName}.webmodeler`]: paths.srcPreviewEntry }
     : { [widgetName]: paths.srcEntry };

@@ -4,7 +4,7 @@
   "widgetName": "LazyloadingDataPlaceholder",
   "organization": "mendix",
   "widgetFriendlyName": "Lazyloading Data Placeholder",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "meisam.mahdian@mendix.com",
   "license": "Apache-2.0",

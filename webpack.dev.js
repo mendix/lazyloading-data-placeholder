@@ -85,7 +85,7 @@ const devServerConfigs = {
  */
 
 const getWebpackConfig = () => {
-  const libraryTarget = 'umd';
+  const libraryTarget = 'amd';
   const entry = { [widgetName]: paths.srcEntry };
   /**
    * We cannot use a external babel.config.js
