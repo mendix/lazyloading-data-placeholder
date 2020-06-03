@@ -29,7 +29,7 @@ const organization = companyName
 
 const scopeWithSuffix = suffix => (scope ? `${scope}${suffix}` : '');
 
-const widgetDir = `com/${organization}/${scopeWithSuffix('/')}widget/custom`;
+const widgetDir = `${widgetName}/widget`;
 const widgetUIDir = `${widgetDir}/ui`;
 
 const sharedConfigs = {
@@ -66,10 +66,10 @@ const NORMAL = 'normal';
 const getWebpackConfig = (mode = NORMAL) => {
   const isOnPreview = mode === PREVIEW;
   /**
-   * for widget itself, use `umd`
+   * for widget itself, use `amd`
    * for preview, use `commonjs`
    */
-  const libraryTarget = isOnPreview ? 'commonjs' : 'umd';
+  const libraryTarget = isOnPreview ? 'commonjs' : 'amd';
   const entry = isOnPreview
     ? { [`${widgetName}.webmodeler`]: paths.srcPreviewEntry }
     : { [widgetName]: paths.srcEntry };
@@ -170,7 +170,20 @@ const getWebpackConfig = (mode = NORMAL) => {
       extensions: ['.ts', '.js', '.tsx', '.jsx'],
       modules: ['node_modules'],
     },
-    externals: ['react'],
+    externals: [
+      // {
+      //   react: 'react',
+      // },
+      // {
+      //   'react-dom': 'react-dom',
+      // },
+      {
+        MxWidgetBase: 'mxui/widget/_WidgetBase',
+      },
+      {
+        dojoBaseDeclare: 'dojo/_base/declare',
+      },
+    ],
     plugins,
   };
 };

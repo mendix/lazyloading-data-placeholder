@@ -31,7 +31,7 @@ const organization = companyName
 
 const scopeWithSuffix = suffix => (scope ? `${scope}${suffix}` : '');
 
-const widgetDir = `com/${organization}/${scopeWithSuffix('/')}widget/custom`;
+const widgetDir = `${widgetName}/widget`;
 const widgetUIDir = `${widgetDir}/ui`;
 
 const sharedConfigs = {
@@ -85,7 +85,7 @@ const devServerConfigs = {
  */
 
 const getWebpackConfig = () => {
-  const libraryTarget = 'umd';
+  const libraryTarget = 'amd';
   const entry = { [widgetName]: paths.srcEntry };
   /**
    * We cannot use a external babel.config.js
@@ -167,7 +167,20 @@ const getWebpackConfig = () => {
       extensions: ['.ts', '.js', '.tsx', '.jsx', '.css', '.scss'],
       modules: ['node_modules'],
     },
-    externals: ['react'],
+    externals: [
+      // {
+      //   react: 'react',
+      // },
+      // {
+      //   'react-dom': 'react-dom',
+      // },
+      {
+        MxWidgetBase: 'mxui/widget/_WidgetBase',
+      },
+      {
+        dojoBaseDeclare: 'dojo/_base/declare',
+      },
+    ],
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({ filename: `${widgetUIDir}/[name].css` }),

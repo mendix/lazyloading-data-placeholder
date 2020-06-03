@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="<%= NAME %>.widget.<%= NAME %>" needsEntityContext="false" xmlns="http://www.mendix.com/widget/1.0/">
+  <name><%= FRIENDLY_NAME %></name>
+  <description><%= WIDGET_DESC %></description>
+  <icon></icon>
+  <properties>
+    <property key="pageContent" type="form" required="true">
+      <caption>Result page</caption>
+      <category>Settings</category>
+      <description>The page to load and display as lazy</description>
+    </property>
+    <property key="placeholderSkeleton" type="string" multiline="true" defaultValue="" required="false">
+      <caption>Placeholder SVG</caption>
+      <category>Settings</category>
+      <description>Placeholder skeleton to be shown before actual result content loads.</description>
+    </property>
+    <property key="repeatCount" type="integer" defaultValue="1">
+      <caption>Render Count</caption>
+      <category>Settings</category>
+      <description>Set the number of renders for the placeholder skeleton.</description>
+    </property>
+    <property key="containerClass" type="string" defaultValue="" required="false">
+      <caption>Container class</caption>
+      <category>Style</category>
+      <description>Class name of the loading container.</description>
+    </property>
+    <property key="containerStyle" type="string" defaultValue="" required="false">
+      <caption>Container style</caption>
+      <category>Style</category>
+      <description>CSS stylesheet of the loading container.</description>
+    </property>
+    <property key="itemClass" type="string" defaultValue="" required="false">
+      <caption>Item class</caption>
+      <category>Style</category>
+      <description>Class name for each placeholder item</description>
+    </property>
+    <property key="itemStyle" type="string" defaultValue="" required="false">
+      <caption>Item style</caption>
+      <category>Style</category>
+      <description>CSS stylesheet for each placeholder item</description>
+    </property>
+  </properties>
+</widget>
