@@ -38,6 +38,7 @@ export default class WidgetContainer {
     this.pageInitiated = false;
     this.mxObjectContext = obj;
     this.resetSubscriptions();
+    this.loadContent();
   };
 
   resize = () => {
@@ -60,7 +61,7 @@ export default class WidgetContainer {
         callback: () => {
           if (this.loadingStarted == false) {
             console.debug(
-              this.widgetId + '.Refresh triggered on object change.'
+              this.widgetId + ' Refresh triggered on object change.'
             );
             this.loadContent();
           }
@@ -70,9 +71,8 @@ export default class WidgetContainer {
     }
   };
 
-  private showContent = () => {
+  private switchContent = () => {
     ReactDOM.unmountComponentAtNode(this.widgetDomNode);
-
     this.widgetDomNode.innerHTML = '';
     this.widgetDomNode.appendChild(this.divContent!);
   };
@@ -89,7 +89,7 @@ export default class WidgetContainer {
           this.contentForm.destroy();
         }
         this.contentForm = (mxform as unknown) as mxui.lib.form.InlineForm;
-        this.showContent();
+        this.switchContent();
         this.loadingStarted = false;
       },
       error: (error: object) => {
@@ -107,15 +107,11 @@ export default class WidgetContainer {
     this.loadingStarted = true;
 
     if (this.pageInitiated) {
-      if (this.loadingStarted) {
-        this.showContent();
-        this.loadingStarted = false;
-      } else {
-        console.debug(this.widgetId + 'setPage skip because already set.');
-      }
+      this.switchContent();
+      this.loadingStarted = false;
     } else {
       this.pageInitiated = true;
-      console.debug(this.widgetId + 'setPage');
+      console.debug(this.widgetId + ' setPage');
       if (this.mxObjectContext) {
         const pageContext = new mendix.lib.MxContext();
         pageContext.setTrackObject(this.mxObjectContext);
