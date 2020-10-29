@@ -7,6 +7,15 @@ import { WidgetProps } from '../@typings';
 import { Placeholder, PlaceholderProps } from '../components/Placeholder';
 import parseStyle from '../utils/parseStyle';
 
+interface FormProps {
+  location: 'content' | 'popup' | 'modal' | 'node';
+  domNode?: HTMLElement;
+  title?: string;
+  context?: mendix.lib.MxContext;
+  callback?(form: mxui.lib.form._FormBase): void;
+  error?(error: Error): void;
+}
+
 export default class WidgetContainer {
   private widgetId: string;
   private widgetParams: WidgetProps;
@@ -80,8 +89,8 @@ export default class WidgetContainer {
   private openFormByFormProp = (pageContext?: mendix.lib.MxContext) => {
     console.debug(this.widgetId + '.openFormByFormProp: ');
     this.divContent = document.createElement('div');
-    const props = {
-      location: 'node' as 'content' | 'popup' | 'modal' | 'node',
+    const props: FormProps = {
+      location: 'node',
       domNode: this.divContent,
       callback: (mxform: mxui.lib.form._FormBase) => {
         console.debug(this.widgetId + '.showPage on form');
